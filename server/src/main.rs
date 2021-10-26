@@ -14,7 +14,8 @@ fn handle_client(mut stream: TcpStream) -> Result<(), Error>{
             println!("OK");
             return Ok(())
         }
-        //stream.write(echo_string.as_bytes())?;
+        //echo接收的字符
+        stream.write(&buf[..len])?;
         // 输出读取到的内容
         println!("read {} bytes: {:?}", len, str::from_utf8(&buf[..len]));
     
